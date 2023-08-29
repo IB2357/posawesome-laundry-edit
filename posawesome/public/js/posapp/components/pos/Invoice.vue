@@ -855,6 +855,7 @@ export default {
       isReadOnly:false,
       isUrgent: false,
       urgent_price_list: 'test',
+      standard_price_list: 'Standard Selling',
       default_label:'Standard',
       urgent_label:'Urgent',
       urgent_date: frappe.datetime.nowdate(),
@@ -925,7 +926,7 @@ export default {
       return this.isUrgent ? this.urgent_label : this.default_label;
     },
     my_price_list() {
-      return this.isUrgent ? this.urgent_price_list : this.pos_profile.price_list;
+      return this.isUrgent ? this.urgent_price_list : this.standard_price_list;
     },
     // my_delivery_date(){
     //   this.invoice_doc.posa_delivery_date = this.my_delivery_date;
@@ -1279,6 +1280,7 @@ export default {
       doc.posting_date = this.posting_date;
       // aswh
       doc.selling_price_list = this.my_price_list;
+      this.pos_profile.selling_price_list = this.my_price_list;
       if (this.isUrgent){
         doc.posa_delivery_date = this.urgent_date;
       }
@@ -1345,6 +1347,7 @@ export default {
       });
       // aswh
       this.invoice_doc.selling_price_list = this.my_price_list;
+      this.pos_profile.selling_price_list = this.my_price_list;
       if (this.isUrgent){
         this.invoice_doc.posa_delivery_date = this.urgent_date;
       }
