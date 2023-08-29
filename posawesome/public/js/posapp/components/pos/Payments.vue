@@ -1,5 +1,9 @@
 <template>
   <div>
+    <!-- aswh  -->
+    <div>
+   for debugging {{ invoice_doc.selling_price_list }}
+    </div>
     <v-card
       class="selection mx-auto grey lighten-5 pa-1"
       style="max-height: 76vh; height: 76vh"
@@ -872,7 +876,6 @@ export default {
       data['redeemed_customer_credit'] = this.redeemed_customer_credit;
       data['customer_credit_dict'] = this.customer_credit_dict;
       data['is_cashback'] = this.is_cashback;
-
       const vm = this;
       frappe.call({
         method: 'posawesome.posawesome.api.posapp.submit_invoice',
