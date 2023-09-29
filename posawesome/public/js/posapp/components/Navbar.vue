@@ -1,23 +1,24 @@
 <template>
   <nav>
     <v-app-bar app height="40" class="elevation-2">
-      <v-app-bar-nav-icon
+      <!-- <v-app-bar-nav-icon
         @click.stop="drawer = !drawer"
         class="grey--text"
-      ></v-app-bar-nav-icon>
+      ></v-app-bar-nav-icon> -->
       <v-img
-        src="/assets/posawesome/js/posapp/components/pos/pos.png"
+        :src="company_img"
+        @click="go_desk"
+        style="cursor: pointer"
         alt="POS"
         max-width="32"
         class="mr-2"
         color="primary"
       ></v-img>
       <v-toolbar-title
-        @click="go_desk"
-        style="cursor: pointer"
+        style="cursor: unset"
         class="text-uppercase primary--text"
       >
-        <span class="font-weight-light">pos</span>
+        <span class="font-weight-light">{{ company }} - POS</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -90,7 +91,7 @@
         </v-menu>
       </div>
     </v-app-bar>
-    <v-navigation-drawer
+    <!-- <v-navigation-drawer
       v-model="drawer"
       :mini-variant.sync="mini"
       app
@@ -109,7 +110,7 @@
             <v-icon>mdi-chevron-left</v-icon>
           </v-btn>
         </v-list-item>
-        <!-- <MyPopup/> -->
+       
         <v-list-item-group v-model="item" color="white">
           <v-list-item
             v-for="item in items"
@@ -125,7 +126,7 @@
           </v-list-item>
         </v-list-item-group>
       </v-list>
-    </v-navigation-drawer>
+    </v-navigation-drawer> -->
     <v-snackbar v-model="snack" :timeout="5000" :color="snackColor" top right>
       {{ snackText }}
     </v-snackbar>
