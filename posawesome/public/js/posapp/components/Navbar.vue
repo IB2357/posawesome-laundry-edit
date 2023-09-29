@@ -7,7 +7,7 @@
       ></v-app-bar-nav-icon>
       <v-img
         src="/assets/posawesome/js/posapp/components/pos/pos.png"
-        alt="POS Awesome"
+        alt="POS"
         max-width="32"
         class="mr-2"
         color="primary"
@@ -18,10 +18,13 @@
         class="text-uppercase primary--text"
       >
         <span class="font-weight-light">pos</span>
-        <span>awesome</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
+      <!-- aswh -->
+      <v-btn @click="go_payments" style="cursor: pointer" text color="primary">
+        <span right>Payments</span>
+      </v-btn>
       <v-btn style="cursor: unset" text color="primary">
         <span right>{{ pos_profile.name }}</span>
       </v-btn>
@@ -73,14 +76,14 @@
                     <v-list-item-title>{{ __('Logout') }}</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
-                <v-list-item @click="go_about">
+                <!-- <v-list-item @click="go_about">
                   <v-list-item-icon>
                     <v-icon>mdi-information-outline</v-icon>
                   </v-list-item-icon>
                   <v-list-item-content>
                     <v-list-item-title>{{ __('About') }}</v-list-item-title>
                   </v-list-item-content>
-                </v-list-item>
+                </v-list-item> -->
               </v-list-item-group>
             </v-list>
           </v-card>
@@ -173,6 +176,14 @@ export default {
     go_desk() {
       frappe.set_route('/');
       location.reload();
+    },
+    go_payments() {
+      //frappe.set_route to set the route
+      frappe.set_route('List', 'Order');
+      // Open the URL in a new window
+      window.open(window.location.href, '_blank');
+      frappe.set_route('/posapp');
+
     },
     go_about() {
       const win = window.open(

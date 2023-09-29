@@ -1,9 +1,5 @@
 <template>
   <div>
-    <!-- aswh  -->
-    <div>
-   for debugging {{ invoice_doc.selling_price_list }}
-    </div>
     <v-card
       class="selection mx-auto grey lighten-5 pa-1"
       style="max-height: 76vh; height: 76vh"
@@ -246,7 +242,7 @@
               :prefix="currencySymbol(invoice_doc.currency)"
             ></v-text-field>
           </v-col>
-          <v-col cols="6">
+          <!-- <v-col cols="6">
             <v-text-field
               dense
               outlined
@@ -258,7 +254,7 @@
               disabled
               :prefix="currencySymbol(invoice_doc.currency)"
             ></v-text-field>
-          </v-col>
+          </v-col> -->
           <v-col cols="6">
             <v-text-field
               dense
@@ -591,7 +587,7 @@
           </v-row>
         </div>
         <v-divider></v-divider>
-        <v-row class="pb-0 mb-2" align="start">
+        <!-- <v-row class="pb-0 mb-2" align="start">
           <v-col cols="12">
             <v-autocomplete
               dense
@@ -626,7 +622,7 @@
               </template>
             </v-autocomplete>
           </v-col>
-        </v-row>
+        </v-row> -->
       </div>
     </v-card>
 

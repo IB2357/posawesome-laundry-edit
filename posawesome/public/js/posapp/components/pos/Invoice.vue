@@ -35,35 +35,19 @@
   <!-- </div> -->
       <v-row align="center" class="items px-2 py-1">
         <!-- aswh_edit -->
-        <!-- <v-col
-          v-if="pos_profile.posa_allow_sales_order"
+        <v-col
           cols="9"
           class="pb-2 pr-0"
         >
           <Customer></Customer>
         </v-col>
-        <v-col
-          v-if="!pos_profile.posa_allow_sales_order"
-          cols="12"
-          class="pb-2"
-        >
-          <Customer></Customer>
-        </v-col>
-        <v-col v-if="pos_profile.posa_allow_sales_order" cols="3" class="pb-2">
-          <v-select
-            dense
-            hide-details
-            outlined
-            color="primary"
-            background-color="white"
-            :items="invoiceTypes"
-            :label="frappe._('Type')"
-            v-model="invoiceType"
-            :disabled="invoiceType == 'Return'"
-          ></v-select>
-        </v-col> -->
+        <v-col cols="3" class="pb-2">
+          <button :disabled="manyItems" class="isUrgent-button" :class="{ 'orange-bg': isUrgent }"  @click="toggleUrgent">
+            {{ my_price_list_label }}
+          </button>
+        </v-col> 
         
-        <v-col
+        <!-- <v-col
           cols="10"
           class="pb-2"
         >
@@ -76,7 +60,7 @@
           <button :disabled="manyItems" class="isUrgent-button" :class="{ 'orange-bg': isUrgent }"  @click="toggleUrgent">
             {{ my_price_list_label }}
           </button>
-        </v-col>
+        </v-col> -->
       </v-row>
 
       <v-row
@@ -264,7 +248,7 @@
                       disabled
                     ></v-text-field>
                   </v-col>
-                  <v-col cols="4">
+                  <!-- <v-col cols="4">
                     <v-text-field
                       dense
                       outlined
@@ -282,8 +266,28 @@
                       :rules="[isNumber]"
                       :disabled="!!item.posa_is_offer || !!item.posa_is_replace"
                     ></v-text-field>
-                  </v-col>
+                  </v-col> -->
+                  <!-- aswh -->
                   <v-col cols="4">
+                    <v-text-field
+                      dense
+                      outlined
+                      color="primary"
+                      :label="frappe._('QTY')"
+                      background-color="white"
+                      hide-details
+                      :value="Math.floor(item.qty)"
+                      @change="
+                        [
+                          setFormatedFloat(item, 'qty', null, false, $event),
+                          calc_stock_qty(item, $event),
+                        ]
+                      "
+                      :rules="[isNumber]"
+                      :disabled="!!item.posa_is_offer || !!item.posa_is_replace"
+                    ></v-text-field>
+                  </v-col>
+                  <!-- <v-col cols="4">
                     <v-select
                       dense
                       background-color="white"
@@ -302,7 +306,7 @@
                       "
                     >
                     </v-select>
-                  </v-col>
+                  </v-col> -->
                   <v-col cols="4">
                     <v-text-field
                       dense
@@ -338,7 +342,7 @@
                       "
                     ></v-text-field>
                   </v-col>
-                  <v-col cols="4">
+                  <v-col cols="6">
                     <v-text-field
                       dense
                       outlined
@@ -373,7 +377,7 @@
                       suffix="%"
                     ></v-text-field>
                   </v-col>
-                  <v-col cols="4">
+                  <v-col cols="6">
                     <v-text-field
                       dense
                       outlined
@@ -409,7 +413,7 @@
                       "
                     ></v-text-field>
                   </v-col>
-                  <v-col cols="4">
+                  <!-- <v-col cols="4">
                     <v-text-field
                       dense
                       outlined
@@ -421,8 +425,8 @@
                       disabled
                       :prefix="currencySymbol(pos_profile.currency)"
                     ></v-text-field>
-                  </v-col>
-                  <v-col cols="4">
+                  </v-col> -->
+                  <!-- <v-col cols="4">
                     <v-text-field
                       dense
                       outlined
@@ -433,8 +437,8 @@
                       :value="formtFloat(item.actual_qty)"
                       disabled
                     ></v-text-field>
-                  </v-col>
-                  <v-col cols="4">
+                  </v-col> -->
+                  <!-- <v-col cols="4">
                     <v-text-field
                       dense
                       outlined
@@ -445,8 +449,8 @@
                       v-model="item.item_group"
                       disabled
                     ></v-text-field>
-                  </v-col>
-                  <v-col cols="4">
+                  </v-col> -->
+                  <!-- <v-col cols="4">
                     <v-text-field
                       dense
                       outlined
@@ -457,8 +461,8 @@
                       :value="formtFloat(item.stock_qty)"
                       disabled
                     ></v-text-field>
-                  </v-col>
-                  <v-col cols="4">
+                  </v-col> -->
+                  <!-- <v-col cols="4">
                     <v-text-field
                       dense
                       outlined
@@ -469,7 +473,7 @@
                       v-model="item.stock_uom"
                       disabled
                     ></v-text-field>
-                  </v-col>
+                  </v-col> -->
                   <v-col align="center" cols="4" v-if="item.posa_offer_applied">
                     <v-checkbox
                       dense
@@ -574,7 +578,7 @@
                       </template>
                     </v-autocomplete>
                   </v-col>
-                  <v-col
+                  <!-- <v-col
                     cols="4"
                     v-if="
                       pos_profile.posa_allow_sales_order &&
@@ -634,8 +638,8 @@
                         </v-btn>
                       </v-date-picker>
                     </v-menu>
-                  </v-col>
-                  <v-col
+                  </v-col> -->
+                  <!-- <v-col
                     cols="8"
                     v-if="pos_profile.posa_display_additional_notes"
                   >
@@ -651,7 +655,7 @@
                       v-model="item.posa_notes"
                       :value="item.posa_notes"
                     ></v-textarea>
-                  </v-col>
+                  </v-col> -->
                 </v-row>
               </td>
             </template>
@@ -900,10 +904,10 @@ export default {
           value: 'item_name',
         },
         { text: __('QTY'), value: 'qty', align: 'center' },
-        { text: __('UOM'), value: 'uom', align: 'center' },
+        // { text: __('UOM'), value: 'uom', align: 'center' },
         { text: __('Rate'), value: 'rate', align: 'center' },
         { text: __('Amount'), value: 'amount', align: 'center' },
-        { text: __('is Offer'), value: 'posa_is_offer', align: 'center' },
+        // { text: __('is Offer'), value: 'posa_is_offer', align: 'center' },
       ],
     };
   },
