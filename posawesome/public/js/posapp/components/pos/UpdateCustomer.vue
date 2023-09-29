@@ -7,10 +7,10 @@
     >
       <v-card>
         <v-card-title>
-          <span v-if="customer_id" class="headline primary--text">{{
+          <!-- <span v-if="customer_id" class="headline primary--text">{{
             __('Update Customer')
-          }}</span>
-          <span v-else class="headline primary--text">{{
+          }}</span> -->
+          <span class="headline primary--text">{{
             __('Create Customer')
           }}</span>
         </v-card-title>
@@ -27,7 +27,7 @@
                   v-model="customer_name"
                 ></v-text-field>
               </v-col>
-              <v-col cols="6">
+              <!-- <v-col cols="6">
                 <v-text-field
                   dense
                   color="primary"
@@ -36,8 +36,8 @@
                   hide-details
                   v-model="tax_id"
                 ></v-text-field>
-              </v-col>
-              <v-col cols="6">
+              </v-col> -->
+              <v-col cols="12">
                 <v-text-field
                   dense
                   color="primary"
@@ -47,7 +47,7 @@
                   v-model="mobile_no"
                 ></v-text-field>
               </v-col>
-              <v-col cols="6">
+              <!-- <v-col cols="6">
                 <v-text-field
                   dense
                   color="primary"
@@ -106,7 +106,7 @@
                   >
                   </v-date-picker>
                 </v-menu>
-              </v-col>
+              </v-col> -->
               <v-col cols="6">
                 <v-autocomplete
                   clearable

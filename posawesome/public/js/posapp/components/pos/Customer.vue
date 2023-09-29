@@ -18,9 +18,10 @@
       :disabled="readonly"
       append-icon="mdi-plus"
       @click:append="new_customer"
-      prepend-inner-icon="mdi-account-edit"
+      >
+    <!-- prepend-inner-icon="mdi-account-edit"
       @click:prepend-inner="edit_customer"
-    >
+    > -->
       <template v-slot:item="data">
         <template>
           <v-list-item-content>
@@ -106,9 +107,9 @@ export default {
     new_customer() {
       evntBus.$emit('open_update_customer', null);
     },
-    edit_customer() {
-      evntBus.$emit('open_update_customer', this.customer_info);
-    },
+    // edit_customer() {
+    //   evntBus.$emit('open_update_customer', this.customer_info);
+    // },
     customFilter(item, queryText, itemText) {
       const textOne = item.customer_name
         ? item.customer_name.toLowerCase()
