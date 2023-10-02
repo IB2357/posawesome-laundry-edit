@@ -4,17 +4,18 @@
       <v-card>
         <v-card-title class="text-h5">
           <span class="headline primary--text">{{
-            __('Cancel Current Invoice ?')
+            __('إلغاء الفاتورة الحالية')
           }}</span>
         </v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="error" @click="cancel_invoice">
-            {{ __('Cancel') }}
-          </v-btn>
           <v-btn color="warning" @click="cancel_dialog = false">
-            {{ __('Back') }}
+            {{ __('عودة') }}
           </v-btn>
+          <v-btn color="error" @click="cancel_invoice">
+            تأكيد
+          </v-btn>
+          
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -36,12 +37,12 @@
       <v-row align="center" class="items px-2 py-1">
         <!-- aswh_edit -->
         <v-col
-          cols="9"
+          cols="10"
           class="pb-2 pr-0"
         >
           <Customer></Customer>
         </v-col>
-        <v-col cols="3" class="pb-2">
+        <v-col cols="2" class="pb-2">
           <button :disabled="manyItems" class="isUrgent-button" :class="{ 'orange-bg': isUrgent }"  @click="toggleUrgent">
             {{ my_price_list_label }}
           </button>
@@ -730,7 +731,7 @@
                   ]
                 "
                 :rules="[isNumber]"
-                :label="frappe._('Additional Discount %')"
+                :label="frappe._('خصم إضافي ')"
                 suffix="%"
                 ref="percentage_discount"
                 outlined
@@ -749,7 +750,7 @@
               <v-text-field
                 :value="formtCurrency(total_items_discount_amount)"
                 :prefix="currencySymbol(pos_profile.currency)"
-                :label="frappe._('Items Discounts')"
+                :label="frappe._('الخصم للعناصر')"
                 outlined
                 dense
                 color="warning"
@@ -781,7 +782,9 @@
                 color="warning"
                 dark
                 @click="get_draft_invoices"
-                >{{ __('Held') }}</v-btn
+                ><span class="px-3" >المسودات</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+  <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+</svg></v-btn
               >
             </v-col>
             <v-col cols="6" class="pa-1">
@@ -792,7 +795,9 @@
                 color="secondary"
                 dark
                 @click="open_returns"
-                >{{ __('Return') }}</v-btn
+                ><span class="px-3" >إسترجاع</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+</svg></v-btn
               >
             </v-col>
             <v-col cols="6" class="pa-1">
@@ -802,7 +807,10 @@
                 color="error"
                 dark
                 @click="cancel_dialog = true"
-                >{{ __('Cancel') }}</v-btn
+                ><span class="px-3" > {{ __('Cancel') }} </span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+  <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg></v-btn
               >
             </v-col>
             <v-col cols="6" class="pa-1">
@@ -812,7 +820,9 @@
                 color="accent"
                 dark
                 @click="new_invoice"
-                >{{ __('Save/New') }}</v-btn
+                ><span class="px-3" >حفظ/جديد</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save2" viewBox="0 0 16 16">
+  <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v4.5h2a.5.5 0 0 1 .354.854l-2.5 2.5a.5.5 0 0 1-.708 0l-2.5-2.5A.5.5 0 0 1 5.5 6.5h2V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
+</svg> </v-btn
               >
             </v-col>
             <v-col class="pa-1">
@@ -822,7 +832,10 @@
                 color="success"
                 @click="show_payment"
                 dark
-                >{{ __('PAY') }}</v-btn
+                ><span class="px-3" >دفع</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash" viewBox="0 0 16 16">
+  <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+  <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z"/>
+</svg> </v-btn
               >
             </v-col>
             <v-col
@@ -858,10 +871,11 @@ export default {
       // aswh edit
       isReadOnly:false,
       isUrgent: false,
+      // aswh_v
       urgent_price_list: 'test',
       standard_price_list: 'Standard Selling',
-      default_label:'Standard',
-      urgent_label:'Urgent',
+      default_label:'عادي',
+      urgent_label:'مستعجل',
       urgent_date: frappe.datetime.nowdate(),
 // 
       pos_profile: '',
@@ -1027,7 +1041,7 @@ export default {
     add_item(item) {
       if (!this.customer) {
         evntBus.$emit('show_mesage', {
-          text: __(`There is no Customer !`),
+          text: __(`لم يتم اختيار العميل`),
           color: 'error',
         });
         return;
@@ -1370,14 +1384,14 @@ export default {
     show_payment() {
       if (!this.customer) {
         evntBus.$emit('show_mesage', {
-          text: __(`There is no Customer !`),
+          text: __(`لم يتم اختيار العميل`),
           color: 'error',
         });
         return;
       }
       if (!this.items.length) {
         evntBus.$emit('show_mesage', {
-          text: __(`There is no Items !`),
+          text: __(` يجب إضافة عناصر`),
           color: 'error',
         });
         return;

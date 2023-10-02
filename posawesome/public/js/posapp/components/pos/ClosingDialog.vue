@@ -4,7 +4,7 @@
       <v-card>
         <v-card-title>
           <span class="headline primary--text">{{
-            __('Closing POS Shift')
+            __('إغلاق هذه المناوبة لنقطة التسليم')
           }}</span>
         </v-card-title>
         <v-card-text class="pa-0">
@@ -63,7 +63,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="error" dark @click="close_dialog">{{
-            __('Close')
+            __('إلغاء')
           }}</v-btn>
           <v-btn color="success" dark @click="submit_dialog">{{
             __('Submit')

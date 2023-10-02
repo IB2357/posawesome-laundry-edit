@@ -7,7 +7,7 @@
       <v-card>
         <v-card-title>
           <span class="headline primary--text">{{
-            __('Create POS Opening Shift')
+            __('فتح مناوبة جديدة لنقطة التسليم')
           }}</span>
         </v-card-title>
         <v-card-text>
@@ -63,13 +63,13 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="error" dark @click="go_desk">Cancel</v-btn>
+          <v-btn color="error" dark @click="go_desk">أغلق</v-btn>
           <v-btn
             color="success"
             :disabled="is_loading"
             dark
             @click="submit_dialog"
-            >Submit</v-btn
+            >فتح</v-btn
           >
         </v-card-actions>
       </v-card>

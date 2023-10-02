@@ -7,7 +7,7 @@
       <v-card>
         <v-card-title>
           <span class="headline primary--text">{{
-            __('Select Hold Invoice')
+            __('حدد فاتورة من المسودات')
           }}</span>
         </v-card-title>
         <v-card-text class="pa-0">
@@ -39,8 +39,8 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="error" dark @click="close_dialog">Close</v-btn>
-          <v-btn color="success" dark @click="submit_dialog">Select</v-btn>
+          <v-btn color="error" dark @click="close_dialog">أغلق</v-btn>
+          <v-btn color="success" dark @click="submit_dialog">تحديد</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

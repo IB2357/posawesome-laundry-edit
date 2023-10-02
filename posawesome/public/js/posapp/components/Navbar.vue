@@ -18,13 +18,13 @@
         style="cursor: unset"
         class="text-uppercase primary--text"
       >
-        <span class="font-weight-light">{{ company }} - POS</span>
+        <span class="font-weight-light px-5">{{ company }} - نقطة إستلام</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
       <!-- aswh -->
       <v-btn @click="go_payments" style="cursor: pointer" text color="primary">
-        <span right>Payments</span>
+        <span right>نافذة الطلبات/التسليم</span>
       </v-btn>
       <v-btn style="cursor: unset" text color="primary">
         <span right>{{ pos_profile.name }}</span>
@@ -33,7 +33,9 @@
         <v-menu offset-y>
           <template v-slot:activator="{ on, attrs }">
             <v-btn color="primary" dark text v-bind="attrs" v-on="on"
-              >Menu</v-btn
+              ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+</svg></v-btn
             >
           </template>
           <v-card class="mx-auto" max-width="300" tile>
@@ -48,7 +50,7 @@
                   </v-list-item-icon>
                   <v-list-item-content>
                     <v-list-item-title>{{
-                      __('Close Shift')
+                      __('أغلق المناوبة')
                     }}</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
@@ -64,7 +66,7 @@
                   </v-list-item-icon>
                   <v-list-item-content>
                     <v-list-item-title>{{
-                      __('Print Last Invoice')
+                      __('إطبع آخر فاتورة')
                     }}</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
@@ -74,7 +76,7 @@
                     <v-icon>mdi-logout</v-icon>
                   </v-list-item-icon>
                   <v-list-item-content>
-                    <v-list-item-title>{{ __('Logout') }}</v-list-item-title>
+                    <v-list-item-title>{{ __('تسجيل خروج') }}</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
                 <!-- <v-list-item @click="go_about">

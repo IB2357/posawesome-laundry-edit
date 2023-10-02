@@ -10,9 +10,7 @@
           <!-- <span v-if="customer_id" class="headline primary--text">{{
             __('Update Customer')
           }}</span> -->
-          <span class="headline primary--text">{{
-            __('Create Customer')
-          }}</span>
+          <span class="headline primary--text">إضافة عميل</span>
         </v-card-title>
         <v-card-text class="pa-0">
           <v-container>
@@ -163,10 +161,10 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="error" dark @click="close_dialog">{{
-            __('Close')
+            __('أغلق')
           }}</v-btn>
           <v-btn color="success" dark @click="submit_dialog">{{
-            __('Submit')
+            __('إضافة')
           }}</v-btn>
         </v-card-actions>
       </v-card>
@@ -274,21 +272,21 @@ export default {
       // validate if all required fields are filled
       if (!this.customer_name) {
         evntBus.$emit('show_mesage', {
-          text: __('Customer name is required.'),
+          text: __('إسم العميل إلزامي'),
           color: 'error',
         });
         return;
       }
       if (!this.group) {
         evntBus.$emit('show_mesage', {
-          text: __('Customer group is required.'),
+          text: __('مجموعة العميل إلزامية'),
           color: 'error',
         });
         return;
       }
       if (!this.territory) {
         evntBus.$emit('show_mesage', {
-          text: __('Customer territory is required.'),
+          text: __('إقليم العميل إلزامي'),
           color: 'error',
         });
         return;
@@ -316,9 +314,9 @@ export default {
           args: args,
           callback: (r) => {
             if (!r.exc && r.message.name) {
-              let text = __('Customer created successfully.');
+              let text = __('تمت إضافة العميل بنجاح');
               if (vm.customer_id) {
-                text = __('Customer updated successfully.');
+                text = __('تم تحديث بيانات العميل بنجاح');
               }
               evntBus.$emit('show_mesage', {
                 text: text,
@@ -333,7 +331,7 @@ export default {
             } else {
               frappe.utils.play_sound('error');
               evntBus.$emit('show_mesage', {
-                text: __('Customer creation failed.'),
+                text: __('عملية إضافة العميل فشلت'),
                 color: 'error',
               });
             }

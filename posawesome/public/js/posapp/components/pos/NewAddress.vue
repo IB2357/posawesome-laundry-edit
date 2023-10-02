@@ -4,7 +4,7 @@
       <v-card>
         <v-card-title>
           <span class="headline primary--text">{{
-            __('Add New Address')
+            __('إضافة عنوان جديد')
           }}</span>
         </v-card-title>
         <v-card-text class="pa-0">
@@ -42,7 +42,7 @@
               </v-col>
               <v-col cols="6">
                 <v-text-field
-                  label="City"
+                  label="المدينة"
                   dense
                   color="primary"
                   background-color="white"
@@ -52,7 +52,7 @@
               </v-col>
               <v-col cols="6">
                 <v-text-field
-                  label="State"
+                  label="الولاية"
                   dense
                   background-color="white"
                   hide-details
@@ -103,7 +103,7 @@ export default {
           if (!r.exc) {
             evntBus.$emit('add_the_new_address', r.message);
             evntBus.$emit('show_mesage', {
-              text: 'Customer Address created successfully.',
+              text: 'تم إضافة عنوان العميل بنجاح',
               color: 'success',
             });
             vm.addressDialog = false;

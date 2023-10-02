@@ -3,9 +3,9 @@
     <v-dialog v-model="varaintsDialog" max-width="600px">
       <v-card min-height="500px">
         <v-card-title>
-          <span class="headline primary--text">Select Service</span>
+          <span class="headline primary--text">إختر نوع الخدمة</span>
           <v-spacer></v-spacer>
-          <v-btn color="error" dark @click="close_dialog">Close</v-btn>
+          <v-btn color="error" dark @click="close_dialog">أغلق</v-btn>
         </v-card-title>
         <v-card-text class="pa-0">
           <v-container v-if="parentItem">

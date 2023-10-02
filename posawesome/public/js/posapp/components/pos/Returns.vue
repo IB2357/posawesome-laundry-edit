@@ -3,9 +3,9 @@
     <v-dialog v-model="invoicesDialog" max-width="800px" min-width="800px">
       <v-card>
         <v-card-title>
-          <span class="headline primary--text">{{
-            __('Select Return Invoice')
-          }}</span>
+          <span class="headline primary--text">
+           حدد فاتورة للإسترجاع
+         </span>
         </v-card-title>
         <v-container>
           <v-row class="mb-4">
@@ -51,7 +51,7 @@
         </v-container>
         <v-card-actions class="mt-4">
           <v-spacer></v-spacer>
-          <v-btn color="error mx-2" dark @click="close_dialog">Close</v-btn>
+          <v-btn color="error mx-2" dark @click="close_dialog">أغلق</v-btn>
           <v-btn
             v-if="selected.length"
             color="success"

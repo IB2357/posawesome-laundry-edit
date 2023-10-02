@@ -152,7 +152,7 @@ export default {
         .then((r) => {
           if (r.message) {
             evntBus.$emit('show_mesage', {
-              text: `POS Shift Closed`,
+              text: `تم إغلاق المناوبة لنقطة الإستلام`,
               color: 'success',
             });
             this.check_opening_entry();
